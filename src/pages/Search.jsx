@@ -4,7 +4,7 @@ class Serch extends React.Component {
   render() {
     return (
       <div data-testid="page-search">
-        <p>Login</p>
+        <p>Search</p>
       </div>
     );
   }
