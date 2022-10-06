@@ -3,7 +3,6 @@ import { getUser } from '../services/userAPI';
 
 class Header extends React.Component {
   state = {
-    isLoading: false,
     userName: '',
   };
 
@@ -12,16 +11,12 @@ class Header extends React.Component {
   }
 
   retrieveUser = async () => {
-    this.setState({ isLoading: true });
     const { name } = await getUser();
-    this.setState({ userName: name }, () => {
-      this.setState({ isLoading: false });
-    });
-    // console.log(name);
+    this.setState({ userName: name });
   };
 
   render() {
-    const { userName, isLoading } = this.state;
+    const { userName } = this.state;
 
     return (
       <header data-testid="header-component">
