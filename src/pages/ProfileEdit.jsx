@@ -7,7 +7,7 @@ class ProfileEdit extends React.Component {
       <>
         <Header />
         <div data-testid="page-profile-edit">
-          <p>Profile</p>
+          <p>ProfileEdit</p>
         </div>
       </>
     );
