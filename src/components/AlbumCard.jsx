@@ -10,10 +10,16 @@ class AlbumCard extends React.Component {
         <p>{artistName}</p>
         <p>{collectionName}</p>
         <img src={ artworkUrl100 } alt={ collectionName } />
+        <br />
         <Link
           to={ `/album/${collectionId}` }
           data-testid={ `link-to-album-${collectionId}` }
-        />
+        >
+          {' '}
+          Acesse esse álbum
+          {' '}
+
+        </Link>
       </div>
     );
   }

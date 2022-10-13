@@ -11,7 +11,6 @@ class Login extends React.Component {
   };
 
   checkEnable = ({ target }) => {
-    // validando quantidade caracteres sem uso de state
     const name = target.value;
     return name[2]
       ? this.setState(

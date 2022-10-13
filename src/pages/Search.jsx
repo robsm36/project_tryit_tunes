@@ -13,7 +13,6 @@ class Serch extends React.Component {
   };
 
   checkEnable = ({ target }) => {
-    // validando quantidade caracteres sem uso de state
     const keyword = target.value;
     return keyword[1]
       ? this.setState(
@@ -36,7 +35,6 @@ class Serch extends React.Component {
 
   render() {
     const { loginEnabled, isLoading, result, keyword, savedKeyword } = this.state;
-    // const { artistName, collectionName, artworkUrl100 } = result;
     const artist = (
       <p>
         Resultado de álbuns de:
@@ -48,7 +46,6 @@ class Serch extends React.Component {
       <form action="">
         <input
           type="text"
-          // value={ keyword }
           data-testid="search-artist-input"
           name="name"
           onChange={ this.checkEnable }
@@ -88,7 +85,3 @@ class Serch extends React.Component {
 }
 
 export default Serch;
-
-// Após receber a resposta da requisição exibir na tela o texto Resultado de álbuns de: <artista>, onde <artista> é o nome que foi digitado no input.
-// fazer IF ternario com valor do state result, se for > 1 entao faz o.map com os albuns, se for < 1 entao null. Necessario limpar o state result sempre que chamar
-// a função API
