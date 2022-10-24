@@ -10,16 +10,16 @@ class MusicCard extends React.Component {
   handleFavorite = async (track) => {
     this.setState({ isLoading: true });
     const favoriteTracks = await getFavoriteSongs();
-    this.removeFavorite(favoriteTracks, track);
-    await addSong(track);
+    const isFav = favoriteTracks.some((ftrack) => ftrack.trackId === track.trackId);
+    if (isFav) {
+      removeSong(track);
+    } else if (!isFav) {
+      addSong(track);
+    }
     this.setState({ isLoading: false });
-    return favoriteTracks;
+    const { func } = this.props;
+    func();
   };
-
-  removeFavorite = async (favoriteTracks, track) => (
-    favoriteTracks.some((song) => song.trackId === track.trackId)
-      ? removeSong(track) : null
-  );
 
   favoriteCheck = (favoriteSongs, trackId) => (
     favoriteSongs.some((track) => track.trackId === trackId)
@@ -62,6 +62,7 @@ MusicCard.propTypes = {
   trackId: PropTypes.number.isRequired,
   track: PropTypes.objectOf(String).isRequired,
   favSongs: PropTypes.arrayOf(Object).isRequired,
+  func: PropTypes.func.isRequired,
 };
 
 export default MusicCard;

@@ -51,6 +51,7 @@ class Album extends React.Component {
               key={ track.trackId }
               track={ track }
               favSongs={ favoriteSongs }
+              func={ () => null }
             />)) : null}
         </div>
         {isLoading ? <p>Carregando...</p> : null}
