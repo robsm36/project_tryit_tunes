@@ -41,7 +41,7 @@ class Profile extends React.Component {
         <div data-testid="page-profile">
           <h2>Perfil</h2>
           {isLoading ? <p>Carregando...</p> : userProfile}
-          <Link to="/profile/edit">Editar perfil</Link>
+          <Link to="/profile/qedit">Editar perfil</Link>
         </div>
       </>
     );
