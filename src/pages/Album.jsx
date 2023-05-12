@@ -1,9 +1,11 @@
-import React from 'react';
+/* eslint-disable react/jsx-closing-tag-location */
 import PropTypes from 'prop-types';
+import React from 'react';
+import AlbumCard from '../components/AlbumCard';
 import Header from '../components/Header';
-import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import getMusics from '../services/musicsAPI';
 
 class Album extends React.Component {
   state = {
@@ -31,28 +33,33 @@ class Album extends React.Component {
 
   render() {
     const { albumTracks, albumInfo, isLoading, favoriteSongs } = this.state;
-
+    document.body.classList.add('loginBody');
     return (
       <>
         <Header />
-        <div data-testid="page-album">
-          <p>Album</p>
+        <div className="albumpage">
           {albumInfo
-            ? <p data-testid="artist-name">{albumInfo.artistName}</p>
+            ? <div className="albumcardcontainer">
+              <AlbumCard
+                artistName={ albumInfo.artistName }
+                key={ albumInfo.collectionId }
+                collectionName={ albumInfo.collectionName }
+                artworkUrl100={ albumInfo.artworkUrl100 }
+                collectionId={ albumInfo.collectionId }
+              />
+            </div>
             : null}
-          {albumInfo
-            ? <p data-testid="album-name">{albumInfo.collectionName}</p>
-            : null}
-          {albumTracks ? albumTracks.map((track) => (
-            <MusicCard
-              trackName={ track.trackName }
-              previewUrl={ track.previewUrl }
-              trackId={ track.trackId }
-              key={ track.trackId }
-              track={ track }
-              favSongs={ favoriteSongs }
-              func={ () => null }
-            />)) : null}
+          {albumTracks ? <div className="musicscontainer">
+            {albumTracks.map((track) => (
+              <MusicCard
+                trackName={ track.trackName }
+                previewUrl={ track.previewUrl }
+                trackId={ track.trackId }
+                key={ track.trackId }
+                track={ track }
+                favSongs={ favoriteSongs }
+              />))}
+          </div> : null}
         </div>
         {isLoading ? <p>Carregando...</p> : null}
       </>

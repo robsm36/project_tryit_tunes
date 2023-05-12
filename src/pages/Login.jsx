@@ -1,5 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import playerLogo from '../imgs/pngtree.png';
+import tryItLettering from '../imgs/tryitlettering1.png';
 import { createUser } from '../services/userAPI';
 
 class Login extends React.Component {
@@ -33,28 +35,40 @@ class Login extends React.Component {
 
   render() {
     const { loginEnabled, userName, isLoading, doRedirect } = this.state;
+    document.body.classList.add('loginBody');
 
     return (
-      <div data-testid="page-login">
-        <p>Login</p>
-        <form action="">
-          <input
-            type="text"
-            data-testid="login-name-input"
-            name="name"
-            onChange={ this.checkEnable }
-          />
+      <div className="loginContainer">
+        <div>
+          <img src={ tryItLettering } alt="" className="tryitLogo" />
+        </div>
+        <div className="loginPage">
+          <h2>
+            Digite seu nome
+            <br />
+            e clique Play
+          </h2>
+          <form action="" className="loginPage">
+            <input
+              type="text"
+              name="name"
+              onChange={ this.checkEnable }
+            />
+            <br />
+          </form>
           <button
+            hidden={ isLoading }
+            className="loginButton"
             type="button"
-            data-testid="login-submit-button"
             disabled={ loginEnabled }
             onClick={ () => { this.handleClick({ name: userName }); } }
           >
-            Entrar
+            {}
           </button>
-        </form>
-        {isLoading ? <p>Carregando...</p> : <p> </p>}
-        {doRedirect ? <Redirect to="/search" /> : null}
+          {isLoading ? <p>Carregando...</p> : <p> </p>}
+          {doRedirect ? <Redirect to="/search" /> : null}
+          <img src={ playerLogo } alt="" className="playerLogo" hidden={ isLoading } />
+        </div>
       </div>
     );
   }

@@ -1,7 +1,9 @@
+/* eslint-disable react/jsx-closing-tag-location */
 import React from 'react';
-import Header from '../components/Header';
-import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import AlbumCard from '../components/AlbumCard';
+import Header from '../components/Header';
+import manMusic from '../imgs/manmusic.jpg';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Serch extends React.Component {
   state = {
@@ -43,17 +45,17 @@ class Serch extends React.Component {
       </p>);
 
     const searchForm = (
-      <form action="">
+      <form action="" className="searchBox">
         <input
           type="text"
-          data-testid="search-artist-input"
           name="name"
           onChange={ this.checkEnable }
         />
+        <br />
         <button
+          className="button-50"
           type="button"
           value="Pesquisar"
-          data-testid="search-artist-button"
           disabled={ loginEnabled }
           onClick={ () => { this.handleClick(keyword); } }
         >
@@ -61,23 +63,32 @@ class Serch extends React.Component {
         </button>
       </form>);
 
+    document.body.classList.add('loginBody');
+
     return (
       <>
         <Header />
-        <div data-testid="page-search">
-          <p>Search</p>
+        <br />
+        <div>
           {isLoading ? <p>Carregando...</p> : searchForm}
           {result[0] ? artist : null}
           {result[0]
-            ? result.map((item) => (
-              <AlbumCard
-                artistName={ item.artistName }
-                key={ item.collectionId }
-                collectionName={ item.collectionName }
-                artworkUrl100={ item.artworkUrl100 }
-                collectionId={ item.collectionId }
-              />))
-            : <p>Nenhum álbum foi encontrado</p>}
+            ? <div className="albumcontainer">
+              {result.map((item) => (
+                <AlbumCard
+                  artistName={ item.artistName }
+                  key={ item.collectionId }
+                  collectionName={ item.collectionName }
+                  artworkUrl100={ item.artworkUrl100 }
+                  collectionId={ item.collectionId }
+                />))}
+            </div>
+            : <p />}
+          <div className="listenerimg">
+            <p>Na sua hora.</p>
+            <img src={ manMusic } alt="" className="manmusic" />
+            <p id="p2">Do seu jeito.</p>
+          </div>
         </div>
       </>
     );

@@ -5,7 +5,6 @@ import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Favorites extends React.Component {
   state = {
-    isLoading: false,
     favoriteTracks: [],
   };
 
@@ -14,9 +13,7 @@ class Favorites extends React.Component {
   }
 
   mytest = async () => {
-    this.setState({ isLoading: true });
     const favoriteTracks = await getFavoriteSongs();
-    this.setState({ isLoading: false });
     this.setState({
       favoriteTracks,
     });
@@ -25,28 +22,30 @@ class Favorites extends React.Component {
   updateFavorites = () => {
     const favoriteTracks = JSON.parse(localStorage.getItem('favorite_songs'));
     this.setState({ favoriteTracks });
-    // JSON.parse(localStorage.getItem(FAVORITE_SONGS_KEY))
   };
 
   render() {
-    const { isLoading, favoriteTracks } = this.state;
+    const { favoriteTracks } = this.state;
+    document.body.classList.add('loginBody');
+
     return (
       <>
         <Header />
-        <div data-testid="page-favorites">
-          <p>Favorites</p>
-          {
-            isLoading ? <p> Carregando... </p> : favoriteTracks.map((track) => (
-              <MusicCard
-                trackName={ track.trackName }
-                previewUrl={ track.previewUrl }
-                trackId={ Number(track.trackId) }
-                key={ track.trackId }
-                track={ track }
-                favSongs={ favoriteTracks }
-                func={ this.updateFavorites }
-              />))
-          }
+        <div>
+          <div className="favoritescontainer">
+            {
+              favoriteTracks.map((track) => (
+                <MusicCard
+                  trackName={ track.trackName }
+                  previewUrl={ track.previewUrl }
+                  trackId={ Number(track.trackId) }
+                  key={ track.trackId }
+                  track={ track }
+                  favSongs={ favoriteTracks }
+                  func={ this.updateFavorites }
+                />))
+            }
+          </div>
         </div>
       </>
     );

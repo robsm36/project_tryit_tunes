@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
 
@@ -18,19 +17,13 @@ class Profile extends React.Component {
 
   render() {
     const { user, isLoading } = this.state;
-    const { description, email, image, name } = user;
+    const { name } = user;
     const userProfile = (
       <div>
         <p>
+          Nome:
           {' '}
           {name}
-        </p>
-        <p>
-          {email}
-        </p>
-        <img src={ image } alt="" data-testid="profile-image" />
-        <p>
-          {description}
         </p>
       </div>
     );
@@ -38,10 +31,9 @@ class Profile extends React.Component {
     return (
       <>
         <Header />
-        <div data-testid="page-profile">
+        <div>
           <h2>Perfil</h2>
           {isLoading ? <p>Carregando...</p> : userProfile}
-          <Link to="/profile/qedit">Editar perfil</Link>
         </div>
       </>
     );
