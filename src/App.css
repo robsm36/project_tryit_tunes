@@ -1,18 +1,37 @@
 body {
   margin: 0;
-  font-family: "Bebas Neue", cursive;
+  font-family: 'Bebas Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
   color: white;
+  /* height: 100%; */
+  display: table-cell;
+  width: 100%;
 }
 
-.loginBody {
+html {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
   display: flex;
-  background-color: rgb(29, 185, 84);
-  justify-content: space-around;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
   align-items: center;
-  height: fit-content;
+  background-color: rgb(29, 185, 84);
+  /* padding-bottom: 10%; */
 }
 
 .loginPage {
@@ -20,7 +39,7 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  width: 22rem;
+  width: 100%;
 }
 
 .loginPage h2 {
@@ -39,18 +58,14 @@ input {
 }
 
 .searchBox input {
-  width: 24.5rem;
+  width: 70%;
+  color: white
 }
 
 .playerLogo {
   width: 20rem;
   -webkit-filter: grayscale(1) invert(1);
   filter: grayscale(1) invert(1);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 .loading {
@@ -64,8 +79,8 @@ code {
   background-color: transparent;
   border: none;
   position: absolute;
-  top: 28.2rem;
   width: 7rem;
+  margin-left: 6.5rem;
   height: 7rem;
   background-repeat: no-repeat;
   background-position: 5px 0px;
@@ -89,7 +104,7 @@ code {
 
 .loginContainer {
   height: 35rem;
-  width: 40rem;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -103,7 +118,7 @@ code {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 25rem;
+  width: 40%;
   flex-wrap: wrap;
   margin-bottom: 5rem;
 }
@@ -112,18 +127,17 @@ code {
   color: white;
 }
 
+.header p {
+  margin-right: 50%;
+}
+
 .searchBox {
   flex-direction: column;
   display: flex;
-  width: 61rem;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
-}
-
-.searchBtn {
-  height: 3rem;
-  width: 25rem;
 }
 
 .username {
@@ -133,20 +147,21 @@ code {
 }
 
 .tryitletter {
-  margin-left: 1rem;
-  width: 50rem;
-  height: 11rem;
+  /* margin-left: 1%; */
+  width: 100%;
+  height: 100%;
 }
 
 .tryitcontainer {
-  width: 100%;
+  width: 41rem;
+  height: 10rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .manmusic {
-  width: 25rem;
-  height: 30rem;
+  width: 30vw;
+  height: 40vw;
   border-radius: 60px;
   box-shadow: rgba(0, 0, 0, 0.9) 0px 3px 8px;
 }
@@ -183,7 +198,7 @@ code {
   vertical-align: middle;
   white-space: nowrap;
   height: 3rem;
-  width: 25rem;
+  width: 70%;
 }
 
 .button-50:focus {
@@ -214,14 +229,17 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 17rem;
-  width: 12rem;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.9) 0px 3px 8px;
   margin-bottom: 1rem;
   background-color: rgb(255, 255, 255);
   color: black;
   overflow: hidden;
+}
+
+.albumlinks {
+  text-decoration: none;
+  width: 22%;
 }
 
 .albumcard p {
@@ -244,38 +262,31 @@ code {
   transform-origin: center;
   transform: scale(var(--img-scale));
   transition: transform 0.4s ease-in-out;
-  height: 10rem;
 }
 
 .albumcontainer {
   flex-wrap: wrap;
   display: flex;
-  justify-content: space-between;
-  width: 59rem;
+  justify-content: space-around;
+  width: 70%;
 }
 
 .listenerimg {
-  width: 61rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-content: space-around
+  align-content: space-around;
 }
 
-
-.headercontainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
 
 .albumdata {
   display: flex;
   flex-direction: column;
   height: 9.5rem;
   justify-content: flex-start;
-  padding: 0.5rem;
   padding-bottom: 0rem;
+  font-size: 100%;
 }
 
 .albumcard:hover {
@@ -299,13 +310,8 @@ code {
   transition: 0.7s all;
 }
 
-.albumlinks {
-  text-decoration: none;
-}
-
 .albumlinks p,
 h4 {
-  font-family: "Bebas Neue", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -315,40 +321,39 @@ h4 {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
-  width: 60rem;
+  width: 100%;
 }
 
 .musicard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20rem;
+  width: 38%;
   margin: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
   border-radius: 1rem;
-  height: 8rem;
 }
 
-.albumcardcontainer {
-  display: flex;
-  justify-content: center;
-  padding-top: 1rem;
-
+.musicard audio {
+  width: 80%;
+  height: 2rem;
+  margin-bottom: 10px;
 }
 
 .musicscontainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 45rem;
+  justify-content: space-around;
+  width: 70%;
 }
 
 .favoritescontainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 70rem;
+  justify-content: center;
+  width: 80%;
+  /* border: solid 1px red; */
 }
 
 .favbox {

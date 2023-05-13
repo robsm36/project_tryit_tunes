@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable react/jsx-closing-tag-location */
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -37,18 +38,16 @@ class Album extends React.Component {
     return (
       <>
         <Header />
+        {/* <p>clique no ❤ para marcar uma música como favorita</p> */}
         <div className="albumpage">
           {albumInfo
-            ? <div className="albumcardcontainer">
-              <AlbumCard
+            ? <AlbumCard
                 artistName={ albumInfo.artistName }
                 key={ albumInfo.collectionId }
                 collectionName={ albumInfo.collectionName }
                 artworkUrl100={ albumInfo.artworkUrl100 }
                 collectionId={ albumInfo.collectionId }
-              />
-            </div>
-            : null}
+            /> : null}
           {albumTracks ? <div className="musicscontainer">
             {albumTracks.map((track) => (
               <MusicCard

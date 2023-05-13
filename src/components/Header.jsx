@@ -27,9 +27,8 @@ class Header extends React.Component {
         <div className="tryitcontainer">
           <img src={ tryitLetter } alt="" className="tryitletter" />
         </div>
-        <div className="headercontainer">
-          <header className="header">
-            {userName
+        <header className="header">
+          {userName
           ? <p className="username">
             Olá,
             {' '}
@@ -37,13 +36,12 @@ class Header extends React.Component {
             !
           </p>
           : null}
-            <Link to="/search">Buscar</Link>
-            <br />
-            <Link to="/favorites">Favoritos</Link>
-            <br />
-            <Link to="/profile">Perfil</Link>
-          </header>
-        </div>
+          <Link to="/search">Buscar</Link>
+          <br />
+          <Link to="/favorites">Favoritos</Link>
+          <br />
+          <Link to="/profile">Perfil</Link>
+        </header>
       </>
     );
   }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import playerLogo from '../imgs/pngtree.png';
@@ -35,7 +36,7 @@ class Login extends React.Component {
 
   render() {
     const { loginEnabled, userName, isLoading, doRedirect } = this.state;
-    document.body.classList.add('loginBody');
+    // document.body.classList.add('loginBody');
 
     return (
       <div className="loginContainer">
@@ -46,28 +47,31 @@ class Login extends React.Component {
           <h2>
             Digite seu nome
             <br />
-            e clique Play
+            e clique no botão Play
           </h2>
           <form action="" className="loginPage">
             <input
               type="text"
               name="name"
               onChange={ this.checkEnable }
+              autoFocus
             />
             <br />
           </form>
-          <button
-            hidden={ isLoading }
-            className="loginButton"
-            type="button"
-            disabled={ loginEnabled }
-            onClick={ () => { this.handleClick({ name: userName }); } }
-          >
-            {}
-          </button>
-          {isLoading ? <p>Carregando...</p> : <p> </p>}
+          {isLoading ? <p>Carregando...</p> : null}
           {doRedirect ? <Redirect to="/search" /> : null}
-          <img src={ playerLogo } alt="" className="playerLogo" hidden={ isLoading } />
+          <div className="playerLogoContainer">
+            <button
+              hidden={ isLoading }
+              className="loginButton"
+              type="button"
+              disabled={ loginEnabled }
+              onClick={ () => { this.handleClick({ name: userName }); } }
+            >
+              { }
+            </button>
+            <img src={ playerLogo } alt="" className="playerLogo" hidden={ isLoading } />
+          </div>
         </div>
       </div>
     );

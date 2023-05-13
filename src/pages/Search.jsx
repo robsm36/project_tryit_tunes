@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/jsx-closing-tag-location */
 import React from 'react';
 import AlbumCard from '../components/AlbumCard';
@@ -50,8 +51,10 @@ class Serch extends React.Component {
           type="text"
           name="name"
           onChange={ this.checkEnable }
+          autoFocus
         />
         <br />
+        <p>Busque pelo artista que deseja escutar</p>
         <button
           className="button-50"
           type="button"
@@ -63,33 +66,31 @@ class Serch extends React.Component {
         </button>
       </form>);
 
-    document.body.classList.add('loginBody');
-
     return (
       <>
         <Header />
         <br />
-        <div>
-          {isLoading ? <p>Carregando...</p> : searchForm}
-          {result[0] ? artist : null}
-          {result[0]
-            ? <div className="albumcontainer">
-              {result.map((item) => (
-                <AlbumCard
-                  artistName={ item.artistName }
-                  key={ item.collectionId }
-                  collectionName={ item.collectionName }
-                  artworkUrl100={ item.artworkUrl100 }
-                  collectionId={ item.collectionId }
-                />))}
-            </div>
-            : <p />}
-          <div className="listenerimg">
-            <p>Na sua hora.</p>
-            <img src={ manMusic } alt="" className="manmusic" />
-            <p id="p2">Do seu jeito.</p>
+        {/* <div> */}
+        {isLoading ? <p>Carregando...</p> : searchForm}
+        {result[0] ? artist : null}
+        {result[0]
+          ? <div className="albumcontainer">
+            {result.map((item) => (
+              <AlbumCard
+                artistName={ item.artistName }
+                key={ item.collectionId }
+                collectionName={ item.collectionName }
+                artworkUrl100={ item.artworkUrl100 }
+                collectionId={ item.collectionId }
+              />))}
           </div>
+          : <p />}
+        <div className="listenerimg">
+          <p>Na sua hora.</p>
+          <img src={ manMusic } alt="" className="manmusic" />
+          <p id="p2">Do seu jeito.</p>
         </div>
+        {/* </div> */}
       </>
     );
   }
