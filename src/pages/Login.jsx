@@ -13,6 +13,21 @@ class Login extends React.Component {
     doRedirect: false,
   };
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.listener);
+    return () => {
+      document.removeEventListener('keydown', this.listener);
+    };
+  }
+
+  listener = (event) => {
+    const { userName } = this.state;
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+      event.preventDefault();
+      this.handleClick({ name: userName });
+    }
+  };
+
   checkEnable = ({ target }) => {
     const name = target.value;
     return name[2]

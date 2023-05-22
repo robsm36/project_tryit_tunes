@@ -15,6 +15,21 @@ class Serch extends React.Component {
     savedKeyword: '',
   };
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.listener);
+    return () => {
+      document.removeEventListener('keydown', this.listener);
+    };
+  }
+
+  listener = (event) => {
+    const { keyword } = this.state;
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+      event.preventDefault();
+      this.handleClick(keyword);
+    }
+  };
+
   checkEnable = ({ target }) => {
     const keyword = target.value;
     return keyword[1]
